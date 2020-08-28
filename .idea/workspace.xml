@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="23d54be3-ce21-4d19-842e-1137e05aa2d3" name="Default Changelist" comment="Working edit">
+    <list default="true" id="23d54be3-ce21-4d19-842e-1137e05aa2d3" name="Default Changelist" comment="Added toastr alerts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/adminlte.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/adminlte.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/database.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/database.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +175,7 @@
       <updated>1598300778282</updated>
       <workItem from="1598300780098" duration="3508000" />
       <workItem from="1598356651112" duration="1850000" />
-      <workItem from="1598551826868" duration="20433000" />
+      <workItem from="1598551826868" duration="23213000" />
     </task>
     <task id="LOCAL-00001" summary="List + Delete working">
       <created>1598603888874</created>
@@ -198,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598621670534</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added toastr alerts">
+      <created>1598622067415</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1598622067415</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +217,8 @@
     <MESSAGE value="List + Delete working" />
     <MESSAGE value="Dynamically read/create records" />
     <MESSAGE value="Working edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working edit" />
+    <MESSAGE value="Added toastr alerts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added toastr alerts" />
   </component>
   <component name="WindowStateProjectService">
     <state x="427" y="170" key="#CLI_Interpreters" timestamp="1598357295132">
@@ -229,10 +237,10 @@
       <screen x="0" y="23" width="1680" height="970" />
     </state>
     <state x="341" y="147" key="SettingsEditor/0.23.1680.970/1680.23.1920.1057@0.23.1680.970" timestamp="1598554612500" />
-    <state x="440" y="248" key="Vcs.Push.Dialog.v2" timestamp="1598621674253">
+    <state x="440" y="248" key="Vcs.Push.Dialog.v2" timestamp="1598622068584">
       <screen x="0" y="23" width="1680" height="970" />
     </state>
-    <state x="440" y="248" key="Vcs.Push.Dialog.v2/0.23.1680.970/1680.23.1920.1057@0.23.1680.970" timestamp="1598621674253" />
+    <state x="440" y="248" key="Vcs.Push.Dialog.v2/0.23.1680.970/1680.23.1920.1057@0.23.1680.970" timestamp="1598622068584" />
     <state x="662" y="409" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1598603803533">
       <screen x="0" y="23" width="1680" height="970" />
     </state>

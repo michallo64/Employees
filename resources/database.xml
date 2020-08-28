@@ -2,5 +2,5 @@
 <list>
     <employees>
     
-    </employees>
+    <employee id="1" name="Jana" sex="Female" age="21" position="Technician"/><employee id="2" name="Michal" sex="Male" age="24" position="CEO"/><employee id="3" name="Kristian" sex="Male" age="34" position="Technician"/></employees>
 </list>

@@ -11,28 +11,24 @@ class EmployeesController extends Controller
 {
     public function home()
     {
-        return view('welcome');
+        $employees = $this->parseXml();
+        $data = array();
+        $data['names'] = array();
+        $data['ages'] = array();
+        foreach ($employees as $employee) {
+            array_push($data['names'], $employee->name);
+            array_push($data['ages'], $employee->age);
+        }
+        return view('welcome', compact('employees'));
     }
 
     public function index()
     {
 
-        $employees = new Collection();
+
         $tempEmployee = new Employee();
         $fillables = $tempEmployee->getFillable();
-        $xml = simplexml_load_file('../resources/database.xml');
-        $json = json_encode($xml->employees);
-        $array = json_decode($json, TRUE);
-
-        if (!empty($array['employee'])) {
-            foreach ($array['employee'] as $employee) {
-                if(!empty($employee['@attributes'])){
-                    $employees->add(new Employee($employee['@attributes']));
-                }else{
-                    $employees->add(new Employee($employee));
-                }
-            }
-        }
+        $employees = $this->parseXml();
         return view('index', compact('employees', 'fillables'));
     }
 
@@ -98,6 +94,24 @@ class EmployeesController extends Controller
             }
         }
         return null;
+    }
+
+    protected function parseXml(){
+        $employees = new Collection();
+        $xml = simplexml_load_file('../resources/database.xml');
+        $json = json_encode($xml->employees);
+        $array = json_decode($json, TRUE);
+
+        if (!empty($array['employee'])) {
+            foreach ($array['employee'] as $employee) {
+                if(!empty($employee['@attributes'])){
+                    $employees->add(new Employee($employee['@attributes']));
+                }else{
+                    $employees->add(new Employee($employee));
+                }
+            }
+        }
+        return $employees;
     }
 }
 
