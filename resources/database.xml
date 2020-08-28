@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<employees>
+<list>
+    <employees>
     
-    
-</employees>
+    <employee id="1" name="Michal" sex="Male" age="23" position="CEO"/></employees>
+</list>

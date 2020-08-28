@@ -18,18 +18,19 @@
             <table id="authors" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Sex</th>
-                    <th>Age</th>
+                    @foreach($fillables as $fillable)
+                        <th>{{ucfirst($fillable)}}</th>
+                    @endforeach
                     <th>Action</th>
                 </tr>
                 </thead>
                 @if(!$employees->isEmpty())
                     @foreach($employees as $employee)
                         <tr>
-                            <td>{{$employee->name}}</td>
-                            <td>{{$employee->sex}}</td>
-                            <td>{{$employee->age}}</td>
+                            @foreach($fillables as $attribute)
+                                <td>{{$employee[$attribute]}}</td>
+                            @endforeach
+
                             <td><a href="{{route('employee.edit', $employee->id)}}"
                                    class="btn btn-info">Edit</a> ||
                                 <a href="{{route('employee.delete', $employee->id)}}"
@@ -39,7 +40,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="4">No data to display.</td>
+                        <td colspan="{{count($fillables)+1}}">No data to display.</td>
                     </tr>
                 @endif
             </table>
@@ -73,10 +74,20 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="sex">Sex</label>
-                                    <select id="sex" class="custom-select" name="age">
+                                    <select id="sex" class="custom-select" name="sex">
                                         <option selected disabled>Select one</option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="position">Position</label>
+                                    <select id="position" class="custom-select" name="position">
+                                        <option selected disabled>Select one</option>
+                                        <option value="CEO">CEO</option>
+                                        <option value="Technician">Technician</option>
                                     </select>
                                 </div>
                             </div>
@@ -93,13 +104,4 @@
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
-    </div>
 @endsection
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop
