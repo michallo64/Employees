@@ -50,7 +50,11 @@ class EmployeesController extends Controller
             }
         }
         $xml->saveXML('../resources/database.xml');
-        return redirect()->back();
+        $notification = array(
+            'message' => 'Employee was edited.',
+            'alert-type' => 'info',
+        );
+        return redirect()->back()->with($notification);
     }
 
     public function delete($id)
@@ -63,8 +67,11 @@ class EmployeesController extends Controller
             }
         }
         $xml->saveXML('../resources/database.xml');
-        return redirect()->back();
-    }
+        $notification = array(
+            'message' => 'Employee was deleted.',
+            'alert-type' => 'info',
+        );
+        return redirect()->back()->with($notification);    }
 
     public function create(Request $request)
     {
@@ -77,8 +84,11 @@ class EmployeesController extends Controller
             $child->addAttribute($item, $employee[$item]);
         }
         $xml->saveXML('../resources/database.xml');
-        return redirect()->back();
-    }
+        $notification = array(
+            'message' => 'Employee was created.',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);    }
 
     public function getData($id){
         $xml = simplexml_load_file('../resources/database.xml');
