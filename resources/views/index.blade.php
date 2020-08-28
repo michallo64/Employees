@@ -31,8 +31,11 @@
                                 <td>{{$employee[$attribute]}}</td>
                             @endforeach
 
-                            <td><a href="{{route('employee.edit', $employee->id)}}"
-                                   class="btn btn-info">Edit</a> ||
+                            <td>
+                                <button class="btn btn-info" data-toggle="modal" data-target="#modal-second"
+                                        onclick="fill({{$employee->id}})">Edit
+                                </button>
+                                ||
                                 <a href="{{route('employee.delete', $employee->id)}}"
                                    class="btn btn-danger"
                                    id="delete">Delete</a></td>
@@ -94,8 +97,8 @@
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="submit" class="btn btn-primary">Create</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </div>
                 </form>
             </div>
@@ -103,5 +106,86 @@
         </div>
         <!-- /.modal-content -->
     </div>
+    <div class="modal fade" id="modal-second">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit employee</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form role="form" action="{{route('employee.edit')}}" method="post">
+                    <div class="modal-body">
+                        @csrf
+                        <input type="hidden" id="id" name="id" value="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label for="age">Age</label>
+                                    <input type="number" class="form-control" id="age" name="age">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="sex">Sex</label>
+                                    <select id="sex" class="custom-select" name="sex">
+                                        <option selected disabled>Select one</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="position">Position</label>
+                                    <select id="position" class="custom-select" name="position">
+                                        <option selected disabled>Select one</option>
+                                        <option value="CEO">CEO</option>
+                                        <option value="Technician">Technician</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+
     <!-- /.modal-dialog -->
+@endsection
+
+@section('js')
+    <script>
+        var data;
+
+        function fill(id) {
+            $.ajax({
+                type: "POST",
+                url: "employee/" + id,
+                data: {
+                    _token: "{{ csrf_token() }}",
+                },
+            }).done(function (msg) {
+                data = $.parseJSON(msg)['@attributes']
+                $.each(data, function (i, item) {
+                    $("#modal-second").find("#" + i).val(item)
+                })
+            })
+        }
+    </script>
+
 @endsection

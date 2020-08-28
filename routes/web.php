@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 Route::get('/home', "EmployeesController@home")->name('home');
 Route::get('/employees', 'EmployeesController@index')->name('employees');
-Route::get('/employees/{id}', 'EmployeesController@edit')->name('employee.edit');
+Route::post('/employees/edit', 'EmployeesController@edit')->name('employee.edit');
 Route::get('/employees/delete/{id}', 'EmployeesController@delete')->name('employee.delete');
 Route::post('/employees', 'EmployeesController@create')->name('employee.create');
+Route::post('/employee/{id}', 'EmployeesController@getData');
 

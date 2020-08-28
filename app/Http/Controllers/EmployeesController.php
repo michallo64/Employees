@@ -36,9 +36,21 @@ class EmployeesController extends Controller
         return view('index', compact('employees', 'fillables'));
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-
+        $xml = simplexml_load_file('../resources/database.xml');
+        $tempEmployee = new Employee();
+        $fill = $tempEmployee->getFillable();
+        $data = $request->all();
+        foreach ($xml->employees->employee as $employee) {
+            if ($employee->attributes()->id == $data['id']) {
+                foreach ($fill as $item){
+                    $employee->attributes()[$item] = $data[$item];
+                }
+            }
+        }
+        $xml->saveXML('../resources/database.xml');
+        return redirect()->back();
     }
 
     public function delete($id)
@@ -66,6 +78,16 @@ class EmployeesController extends Controller
         }
         $xml->saveXML('../resources/database.xml');
         return redirect()->back();
+    }
+
+    public function getData($id){
+        $xml = simplexml_load_file('../resources/database.xml');
+        foreach ($xml->employees->employee as $employee) {
+            if ($employee->attributes()->id == $id) {
+                return json_encode($employee->attributes());
+            }
+        }
+        return null;
     }
 }
 
